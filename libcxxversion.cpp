@@ -2,8 +2,11 @@
 #include <iostream>
 
 int main() {
+#ifdef _LIBCPP_VERSION
+  std::cout << "_LIBCPP_VERSION=" << _LIBCPP_VERSION << std::endl;
 #ifdef _LIBCPP_STD_VER
   std::cout << "_LIBCPP_STD_VER=" << _LIBCPP_STD_VER << std::endl;
+#endif
   bool has_ranges(false);
 #if __has_include(<ranges>)
   has_ranges = true;
