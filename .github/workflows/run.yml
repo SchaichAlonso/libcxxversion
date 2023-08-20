@@ -10,8 +10,9 @@ on:
 jobs:
   run:
     strategy:
+      fail-fast: false
       matrix:
-        runner-image: [macos-11, macos-12, macos-13]
+        runner-image: [macos-11, macos-12, macos-13, ubuntu-20.04, ubuntu-22.04]
     
     runs-on: ${{ matrix.runner-image }}
 
@@ -19,6 +20,6 @@ jobs:
     - name: checkout repository
       uses: actions/checkout@v3
     - name: compile
-      run: clang++ -std=c++20 libcxxversion.cpp -o libcxxversion
+      run: clang++ -std=c++20 -stdlib=libc++ libcxxversion.cpp -o libcxxversion
     - name: execute
       run: ./libcxxversion
