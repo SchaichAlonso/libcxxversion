@@ -16,6 +16,8 @@ jobs:
     runs-on: ${{ matrix.runner-image }}
 
     steps:
+    - name: checkout repository
+      uses: actions/checkout@v3
     - name: compile
       run: clang++ libcxxversion.cpp -o libcxxversion
     - name: execute
