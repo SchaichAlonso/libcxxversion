@@ -17,6 +17,8 @@ jobs:
     runs-on: ${{ matrix.runner-image }}
 
     steps:
+    - name: take a look around
+      run: ls $(dirname $(which clang++))
     - name: checkout repository
       uses: actions/checkout@v3
     - name: compile
